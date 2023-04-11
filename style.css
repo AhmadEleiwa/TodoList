@@ -127,14 +127,15 @@ main .task-list .list .task {
     box-shadow: 2px 0 8px 0px #66666640;
     border-radius: 12px;
     height: 80px;
-
+    transition: all .17s ease-in-out;
 }
 main .task-list .list .task .check-box{
     border-radius:50%;
     padding: 0.3em;
     font-size: 24px;
     color: transparent;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.432);
+    transition: all .17s ease-in-out;
 }
 main .task-list .list .task .task-body{
     width: 80%;
@@ -148,11 +149,12 @@ main .task-list .list .task .task-body input{
     border-radius: 4px;
     font-size: 18px;
     width: 100%;
+
 }
 
 
 main .task-list .list .task input:disabled{
-    border:none;
+    border: 1px solid transparent;
 }
 
 
@@ -169,9 +171,18 @@ main .task-list .list .task .control{
     gap: 1em;
 
 }
+main .task-list .list .task .control .fa-pen-to-square{
+    color: #11A8E6;
+    filter: drop-shadow(0 0 4px #4444dd);
+    transition: all .17s ease-in-out;
+}
+main .task-list .list .task:has(input:disabled) .control .fa-pen-to-square{
+    color: #11A8E6;
+    filter: none;
+}
 
 main .task-list .list .task .control .fa-trash{
-    color: red;
+    color: rgb(241, 36, 36);
 }
 
 main .task-list .list  .done{
@@ -180,9 +191,12 @@ main .task-list .list  .done{
 main .task-list .list  .done .task-body input{
     text-decoration: line-through;
 }
+main .task-list .list .done .control .fa-pen-to-square{
+    color: #818181 !important;
+}
 main .task-list .list  .done .check-box{
     background-color: #11A8E6 ;
     color: white;
-    border:none;
+    border:1px solid #11A8E6  ;
 }
 
