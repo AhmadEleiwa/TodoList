@@ -20,6 +20,8 @@ function check(event) {
         listEl.children
     ).indexOf(event.target.parentElement);
     const el = listEl.children[index]
+
+    el.children[1].children[0].disabled = true
     if (el.classList[1]) {
         el.classList.remove('done')
         doneTodos--;
