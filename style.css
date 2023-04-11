@@ -6,16 +6,17 @@ body{
     font-family: 'Inter', sans-serif;
 }
 main {
-    width: 65%;
-
+    width: 100%;
+    display: flex;
 }
 
 main .card-list {
 
     margin: 1em;
-    width: 100%;
+ 
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 1em;
 
 }
 
