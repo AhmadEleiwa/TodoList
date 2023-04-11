@@ -38,6 +38,9 @@ function deleteEl(event) {
     ).indexOf(event.target.parentElement.parentElement);
 
     const el = listEl.children[index]
+    if(el.classList[1]){
+        doneTodos--;
+    }
     deletedList.splice(0, 0, el)
     
     el.remove()
