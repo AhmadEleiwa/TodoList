@@ -25,21 +25,21 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="title">TODOS</p>
-                        <p class="no">7</p>
+                        <p class="no" id="todos">7</p>
                     </div>
                     <i class="fa-sharp fa-solid fa-list-check"></i>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <p class="title">DONE</p>
-                        <p class="no">7</p>
+                        <p class="no" id="done">7</p>
                     </div>
                     <i class="fa-sharp fa-solid fa-check-double" style="transform:rotate(3.79deg);"></i>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <p class="title">DELETED</p>
-                        <p class="no">7</p>
+                        <p class="no" id="delete">7</p>
                     </div>
                     <i class="fa-solid fa-trash"></i>
 
@@ -50,21 +50,42 @@
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input type="text" placeholder="Search TODOS">
                 </div>
-                <div class="list">
+                <div class="list" id="list">
                     <div class="task">
-                        <i class="fa-solid fa-check check-box"></i>
+                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
                         <div class="task-body">
                             <input type="text" value="Design TODO Application UI" disabled>
                             <p>Ahmad Ilawa</p>
                         </div>
+                        <div class="control">
+
+                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
+                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+
+                        </div>
                     </div>
-                 
+
+                    <div class="task done">
+                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
+                        <div class="task-body">
+                            <input type="text" value="Design TODO Application UI" disabled>
+                            <p>Ahmad Ilawa</p>
+                        </div>
+                        <div class="control">
+                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
+                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </main>
 
     </div>
     <script src="https://kit.fontawesome.com/83d1245909.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

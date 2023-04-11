@@ -102,10 +102,20 @@ main .task-list .search input::placeholder{
 }
 
 
-
+main .task-list .list {
+    width: 102%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1em;
+    overflow-y: scroll ;
+}
 
 main .task-list .list .task {
-    width: 100%;
+
+    width: 98%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -115,18 +125,16 @@ main .task-list .list .task {
     border-radius: 12px;
     height: 80px;
 
-
 }
 main .task-list .list .task .check-box{
     border-radius:50%;
     padding: 0.3em;
     font-size: 24px;
-    color: white;
-
-    background-color: #11A8E6;
+    color: transparent;
+    border: 1px solid black;
 }
 main .task-list .list .task .task-body{
-    width: 90%;
+    width: 80%;
 
 }
 
@@ -136,7 +144,7 @@ main .task-list .list .task .task-body input{
     color: #11A8E6;;
     border-radius: 4px;
     font-size: 18px;
-
+    width: 100%;
 }
 
 
@@ -149,3 +157,29 @@ main .task-list .list .task .task-body p{
     font-size: 14px;
     color: #434343BF;
 }
+
+main .task-list .list .task .control{
+    display: flex;
+    width: 4em;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+}
+
+main .task-list .list .task .control .fa-trash{
+    color: red;
+}
+
+main .task-list .list  .done{
+    background-color: #E3E3E380 ;
+}
+main .task-list .list  .done .task-body input{
+    text-decoration: line-through;
+}
+main .task-list .list  .done .check-box{
+    background-color: #11A8E6 ;
+    color: white;
+    border:none;
+}
+
