@@ -52,7 +52,7 @@
             <div class="task-list">
                 <div class="search">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search TODOS">
+                    <input type="text" placeholder="Search TODOS" oninput="search(event)">
                 </div>
 
                 <div class="control-buttons">
@@ -61,6 +61,8 @@
                     <button>Clear Done Tasks</button>
                     <button>Clear All Tasks</button>
                     <button>Group By Assignee</button>
+                    <button onclick="addTask()">Add Task</button>
+
                 </div>
 
                 <div class="list" id="list">

@@ -7,43 +7,33 @@ const pendingEl = document.getElementById('pending')
 
 
 
-let total = [
-    {
-        title: 'Design TODO Application UI',
-        done: false,
-        assignee: 'Ahmad ilawa',
-        editable: true
 
-    },
-    {
-        title: 'Design TODO Application UI',
-        done: true,
-        assignee: 'Amin Nasser',
-        editable: true
-
-    }
-]
+let total = []
 
 
+function setup(){
+    const x = localStorage.getItem('data')
+    data = JSON.parse(x)
+    total = data
+}
 
-
-function rerender() {
+function rerender(ls) {
     let pending = 0
     let done = 0
     let deleted = 0;
     let elements = ""
-    for(let i=0; i<total.length; i++){
-        if(total[i].done){
+    for(let i=0; i<ls.length; i++){
+        if(ls[i].done){
             done+=1
         }else{
             pending +=1
         }
         elements+= `
-        <div class="task ${total[i].done ? "done": ''}" key=${i}>
+        <div class="task ${ls[i].done ? "done": ''}" key=${i}>
         <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
         <div class="task-body">
-            <input type="text" value="${total[i].title}" ${total[i].editable ? "disabled":""}>
-            <p>${total[i].assignee}</p>
+            <input type="text" oninput="onInputHandler(event)" value="${ls[i].title}" ${ls[i].editable ? "disabled":""}>
+            <p>${ls[i].assignee}</p>
         </div>
         <div class="control">
             <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
@@ -58,6 +48,8 @@ function rerender() {
     pendingEl.innerText = pending
     todosEl.innerText = listEl.children.length
 
+    localStorage.setItem('data', JSON.stringify(total))
+
 
 }
 
@@ -65,43 +57,46 @@ function check(event) {
    total[event.target.parentElement.getAttribute('key')].done = !total[event.target.parentElement.getAttribute('key')].done 
 
 
-    rerender()
+    rerender(total)
 }
 function deleteEl(event) {
 
     let x = event.target.parentElement.parentElement.getAttribute('key')
     total = total.filter((p, i) => i != x)
-    rerender()
+    rerender(total)
 }
 
 
 function edit(event) {
-
-    const index = Array.from(
-        listEl.children
-    ).indexOf(event.target.parentElement.parentElement);
-    const el = listEl.children[index]
-    if (el.classList[1]) return;
-    for (let item of listEl.children) {
-        if (item !== el)
-            item.children[1].children[0].disabled = true
-
-    }
-
-    if (el.children[1].children[0].disabled) {
-
-        el.children[1].children[0].disabled = false
-    } else {
-        el.children[1].children[0].disabled = true
-    }
+    const key = event.target.parentElement.parentElement.getAttribute('key')
+    total[parseInt(key)].editable = !total[parseInt(key)].editable
+    rerender(total)
+ 
 }
 addEventListener('keydown', (e) => {
     if (e.code === 'Enter') {
-        for (let item of listEl.children) {
-            item.children[1].children[0].disabled = true
-
+        for (let item of total) {
+            item.editable = true 
         }
+        rerender(total)
     }
 })
+function onInputHandler(event){
+    const key = event.target.parentElement.parentElement.getAttribute('key')
+    total[parseInt(key)].title = event.target.value;
+}
 
-rerender()
+function search(event){
+    let filtered_list = total.filter((item ,index) => item.title.match(event.target.value))
+    rerender(filtered_list)
+}
+
+
+function addTask(){
+    let title = prompt("Title")
+    let assignee = prompt('assignee')
+    total.push({title, assignee, editable:true, done:false})
+    rerender(total)
+}
+setup()
+rerender(total)
