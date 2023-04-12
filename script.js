@@ -20,10 +20,10 @@ let stat = {
 }
 
 function setup() {
-    const x = localStorage.getItem('data')
+    const x = JSON.parse(localStorage.getItem('data'))
     const st = JSON.parse(localStorage.getItem('stat'))
-
-    total = JSON.parse(x)
+    if(x !== null)
+        total = x
     if (st !== null) {
         stat =   st  
     }
