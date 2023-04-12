@@ -98,5 +98,30 @@ function addTask(){
     total.push({title, assignee, editable:true, done:false})
     rerender(total)
 }
+
+
+
+
+function markAllAsDone(){
+    for(item of total){
+        item.done = true;
+    }
+    rerender(total)
+}
+function markAllAsUnDone(){
+    for(item of total){
+        item.done = false;
+    }
+    rerender(total)
+}
+
+function clearDoneTasks(){
+    total = total.filter((item) => item.done === false )
+    rerender(total)
+}
+function clearAll(){
+    total = []
+    rerender(total)
+}
 setup()
 rerender(total)
