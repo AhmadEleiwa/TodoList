@@ -22,6 +22,7 @@ let stat = {
 function setup() {
     const x = JSON.parse(localStorage.getItem('data'))
     const st = JSON.parse(localStorage.getItem('stat'))
+    console.log(x)
     if(x !== null)
         total = x
     if (st !== null) {
