@@ -106,6 +106,17 @@ main .task-list .search input::placeholder{
     color: #C8C8C8;
 }
 
+main .task-list .control-buttons{
+    display: flex;
+    gap:1em;
+}
+.btn{
+    padding: 1em 1.6em;
+    background-color: #095B83;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+}
 
 main .task-list .list {
     width: 100%;
