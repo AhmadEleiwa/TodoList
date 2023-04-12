@@ -21,11 +21,11 @@ let stat = {
 
 function setup() {
     const x = localStorage.getItem('data')
-    const st =JSON.parse( localStorage.getItem('stat'))
+    const st = JSON.parse(localStorage.getItem('stat'))
 
-    total = JSON.parse(x) 
-    if(st !== null){
-        stat =st
+    total = JSON.parse(x)
+    if (st !== null) {
+        stat =   st  
     }
 }
 
@@ -66,11 +66,11 @@ function renderStatisics() {
 function check(event) {
     if (total[event.target.parentElement.getAttribute('key')].done) {
         total[event.target.parentElement.getAttribute('key')].done = false
-        stat={...stat, done:stat.done-1, pending:stat.pending+1}
+        stat = { ...stat, done: stat.done - 1, pending: stat.pending + 1 }
 
-    }else{
+    } else {
         total[event.target.parentElement.getAttribute('key')].done = true
-        stat={...stat, done:stat.done+1, pending:stat.pending-1}
+        stat = { ...stat, done: stat.done + 1, pending: stat.pending - 1 }
     }
     // total[event.target.parentElement.getAttribute('key')].done
 
@@ -82,8 +82,15 @@ function check(event) {
 function deleteEl(event) {
 
     let x = event.target.parentElement.parentElement.getAttribute('key')
+    if(total[parseInt(x)].done ){
+        stat={...stat, done:stat.done-1, deleteCount:stat.deleteCount+1}
+    }
+    else{
+        stat={...stat, pending:stat.pending-1, deleteCount:stat.deleteCount+1}
+    }
     total = total.filter((p, i) => i != x)
     rerender(total)
+    renderStatisics()
 }
 
 
@@ -91,6 +98,8 @@ function edit(event) {
     const key = event.target.parentElement.parentElement.getAttribute('key')
     total[parseInt(key)].editable = !total[parseInt(key)].editable
     rerender(total)
+    
+
 
 }
 addEventListener('keydown', (e) => {
@@ -146,22 +155,37 @@ function markAllAsDone() {
     for (item of total) {
         item.done = true;
     }
+    stat={...stat, done:total.length, pending:0}
+
+
     rerender(total)
+    renderStatisics()
+
 }
 function markAllAsUnDone() {
     for (item of total) {
         item.done = false;
     }
+    stat={...stat, pending:total.length, done:0}
+
     rerender(total)
+    renderStatisics()
+
 }
 
 function clearDoneTasks() {
     total = total.filter((item) => item.done === false)
+    stat={...stat, pending:total.length, done:0}
     rerender(total)
+    renderStatisics()
+
 }
 function clearAll() {
     total = []
+    stat={...stat, pending:0,done:0}
     rerender(total)
+    renderStatisics()
+
 }
 setup()
 renderStatisics()
