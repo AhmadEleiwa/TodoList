@@ -5,6 +5,8 @@ const deletedEl = document.getElementById('delete')
 const pendingEl = document.getElementById('pending')
 
 
+const backdropEl  = document.getElementById('backdrop')
+const modelEl  = document.getElementById('model')
 
 
 
@@ -91,12 +93,30 @@ function search(event){
     rerender(filtered_list)
 }
 
-
-function addTask(){
-    let title = prompt("Title")
-    let assignee = prompt('assignee')
+function onAddTasnOpenHandler(event){
+    if(modelEl.style.display == "none" ){
+        modelEl.style.display= 'block'
+        backdropEl.style.display = "block"
+    }else{
+        modelEl.style.display= 'none'
+        backdropEl.style.display = "none"
+    }
+}
+function modelCloseHandler(){
+    modelEl.style.display= 'none'
+    backdropEl.style.display = "none"
+}
+function addTask(event){
+    event.preventDefault()
+    let title =  event.target.children[1].value
+    let assignee = event.target.children[3].value
     total.push({title, assignee, editable:true, done:false})
+    event.target.children[1].value = ""
+    event.target.children[3].value = ""
+
+    modelCloseHandler()
     rerender(total)
+    
 }
 
 
