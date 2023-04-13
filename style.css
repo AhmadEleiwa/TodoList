@@ -316,11 +316,29 @@ main .task-list .list  .done .check-box{
     color: black;
 }
 
+.res-main {
+    width: 100%;
+    display: none;
+    margin-top: 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap: 1em;
+}
+.res-main .btn{
+    width: 90%;
+}
 @media screen and (max-width:500px) {
     header {
         display: none;
     }
     .res-header{
         display: flex;
+    }
+    .res-main{
+        display: flex;
+    }
+    main {
+        display: none;
     }
 }
