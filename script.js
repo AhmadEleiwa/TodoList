@@ -5,8 +5,10 @@ const deletedEl = document.getElementById('delete')
 const pendingEl = document.getElementById('pending')
 
 
+
 const backdropEl = document.getElementById('backdrop')
 const modelEl = document.getElementById('model')
+const modelConform = document.getElementById('confrom-delete-model')
 
 
 
@@ -23,10 +25,10 @@ function setup() {
     const x = JSON.parse(localStorage.getItem('data'))
     const st = JSON.parse(localStorage.getItem('stat'))
     console.log(x)
-    if(x !== null)
+    if (x !== null)
         total = x
     if (st !== null) {
-        stat =   st  
+        stat = st
     }
 }
 
@@ -44,7 +46,7 @@ function rerender(ls) {
         </div>
         <div class="control">
             <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
-            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+            <i class="fa-solid fa-trash" onclick="onModelOpenHandler(event, 'deleteEl(event, ${i})')"></i>
         </div>
     </div>
         `
@@ -80,16 +82,16 @@ function check(event) {
     renderStatisics()
 
 }
-function deleteEl(event) {
-
-    let x = event.target.parentElement.parentElement.getAttribute('key')
-    if(total[parseInt(x)].done ){
-        stat={...stat, done:stat.done-1, deleteCount:stat.deleteCount+1}
+function deleteEl(event, index) {
+    event.preventDefault()
+    if (total[index].done) {
+        stat = { ...stat, done: stat.done - 1, deleteCount: stat.deleteCount + 1 }
     }
-    else{
-        stat={...stat, pending:stat.pending-1, deleteCount:stat.deleteCount+1}
+    else {
+        stat = { ...stat, pending: stat.pending - 1, deleteCount: stat.deleteCount + 1 }
     }
-    total = total.filter((p, i) => i != x)
+    total = total.filter((p, i) => i != index)
+    onModelCloseHandler()
     rerender(total)
     renderStatisics()
 }
@@ -99,7 +101,7 @@ function edit(event) {
     const key = event.target.parentElement.parentElement.getAttribute('key')
     total[parseInt(key)].editable = !total[parseInt(key)].editable
     rerender(total)
-    
+
 
 
 }
@@ -121,7 +123,26 @@ function search(event) {
     rerender(filtered_list)
 }
 
-function onAddTasnOpenHandler(event) {
+function onModelOpenHandler(event,callback) {
+    modelConform.innerHTML = `  
+    <form action="" onsubmit="${callback}">
+        <button class="btn">Are you sure ddddd ?</button>
+    </form>
+    `
+    if (modelConform.style.display === "none") {
+        modelConform.style.display = 'block'
+        backdropEl.style.display = "block"
+    } else {
+        modelConform.style.display = 'none'
+        backdropEl.style.display = "none"
+    }
+}
+function onModelCloseHandler(){
+    modelConform.style.display = 'none'
+    backdropEl.style.display = "none"
+}
+function onAddTaskOpenHandler(event) {
+
     if (modelEl.style.display == "none") {
         modelEl.style.display = 'block'
         backdropEl.style.display = "block"
@@ -133,6 +154,7 @@ function onAddTasnOpenHandler(event) {
 function modelCloseHandler() {
     modelEl.style.display = 'none'
     backdropEl.style.display = "none"
+    modelConform.style.display = 'none'
 }
 function addTask(event) {
     event.preventDefault()
@@ -156,7 +178,7 @@ function markAllAsDone() {
     for (item of total) {
         item.done = true;
     }
-    stat={...stat, done:total.length, pending:0}
+    stat = { ...stat, done: total.length, pending: 0 }
 
 
     rerender(total)
@@ -167,7 +189,7 @@ function markAllAsUnDone() {
     for (item of total) {
         item.done = false;
     }
-    stat={...stat, pending:total.length, done:0}
+    stat = { ...stat, pending: total.length, done: 0 }
 
     rerender(total)
     renderStatisics()
@@ -176,14 +198,18 @@ function markAllAsUnDone() {
 
 function clearDoneTasks() {
     total = total.filter((item) => item.done === false)
-    stat={...stat, pending:total.length, done:0}
+    stat = { ...stat, pending: total.length, done: 0 }
     rerender(total)
     renderStatisics()
 
 }
-function clearAll() {
+function clearAll(event) {
+    event.preventDefault()
+    let deletedNo = total.length
     total = []
-    stat={...stat, pending:0,done:0}
+    stat = { ...stat, pending: 0, done: 0, deleteCount:stat.deleteCount+deletedNo }
+    onModelCloseHandler()
+    
     rerender(total)
     renderStatisics()
 

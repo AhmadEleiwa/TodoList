@@ -29,10 +29,10 @@
             </div>
             <h1>odobia</h1>
         </div>
-        <button class="btn" onclick="onAddTasnOpenHandler()">Add New Task</button>
+        <button class="btn" onclick="onAddTaskOpenHandler()">Add New Task</button>
     </header>
-    <div class="model" id="model">
-        <form action="" onsubmit="addTask(event)">
+    <div class="model" id="model" style="display: none;">
+        <form action="" onsubmit="addTask(event)" >
             <label for="">Title</label>
             <input type="text">
             <label for="">Assignee</label>
@@ -40,67 +40,13 @@
             <button class="btn">ADD</button>
         </form>
     </div>
-    <div class="model" id="confrom-delete-model">
+    <div class="model" id="confrom-delete-model" style="display: none;">
         <form action="" onsubmit="deleteEl(event)">
             <button class="btn">Are you sure ?</button>
         </form>
     </div>
     <div class="backdrop" id="backdrop" onclick="modelCloseHandler()"></div>
     <div class="container">
-        <main class="res-main">
-            <button class="btn">
-                <i class="fa-solid fa-plus"></i>
-                Add New Task</button>
-            <div class="task-list">
-                <div class="search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search TODOS" oninput="search(event)">
-                </div>
-                <div class="list" id="list">
-                    <div class="task">
-                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
-                        <div class="task-body">
-                            <input type="text" value="Design TODO Application UI" disabled>
-                            <p>Ahmad Ilawa</p>
-                        </div>
-                        <div class="control">
-
-                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
-                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
-
-                        </div>
-                    </div>
-                    <div class="task done">
-                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
-                        <div class="task-body">
-                            <input type="text" value="Design TODO Application UI" disabled>
-                            <p>Ahmad Ilawa</p>
-                        </div>
-                        <div class="control">
-                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
-                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-list-res">
-                <div class="card-res">
-                    <p class="title">TODOS</p>
-                    <p class="no" id="todos">7</p>
-                </div>
-
-
-                <div class="card-res">
-                    <p class="title">DELETED</p>
-                    <p class="no" id="delete">7</p>
-                </div>
-                <div class="card-res">
-                    <p class="title">DELETED</p>
-                    <p class="no" id="delete">7</p>
-                </div>
-            </div>
-        </main>
         <main>
             <div class="card-list">
                 <div class="card">
@@ -143,7 +89,7 @@
                     <button class="btn" onclick="markAllAsDone()">Mark All as Done</button>
                     <button class="btn" onclick="markAllAsUnDone()">Mark All as Un-Done</button>
                     <button class="btn" onclick="clearDoneTasks()">Clear Done Tasks</button>
-                    <button class="btn" onclick="clearAll()">Clear All Tasks</button>
+                    <button class="btn" onclick="onModelOpenHandler(event,'clearAll(event)' )">Clear All Tasks</button>
                     <button class="btn">Group By Assignee</button>
                 </div>
 
@@ -157,7 +103,7 @@
                         <div class="control">
 
                             <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
-                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+                            <i class="fa-solid fa-trash" onclick="onModelOpenHandler(event, deleteEl(event))"></i>
 
                         </div>
                     </div>
