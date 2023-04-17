@@ -15,7 +15,7 @@
 
 <body>
     <header class="res-header">
-        <p>  TODO APP</p>
+        <p> TODO APP</p>
         <i class="fa-solid fa-ellipsis-vertical"></i>
     </header>
     <header>
@@ -48,10 +48,58 @@
     <div class="backdrop" id="backdrop" onclick="modelCloseHandler()"></div>
     <div class="container">
         <main class="res-main">
-            <button class="btn" >
+            <button class="btn">
                 <i class="fa-solid fa-plus"></i>
                 Add New Task</button>
-            
+            <div class="task-list">
+                <div class="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search TODOS" oninput="search(event)">
+                </div>
+                <div class="list" id="list">
+                    <div class="task">
+                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
+                        <div class="task-body">
+                            <input type="text" value="Design TODO Application UI" disabled>
+                            <p>Ahmad Ilawa</p>
+                        </div>
+                        <div class="control">
+
+                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
+                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+
+                        </div>
+                    </div>
+                    <div class="task done">
+                        <i class="fa-solid fa-check check-box" onclick="check(event)"></i>
+                        <div class="task-body">
+                            <input type="text" value="Design TODO Application UI" disabled>
+                            <p>Ahmad Ilawa</p>
+                        </div>
+                        <div class="control">
+                            <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
+                            <i class="fa-solid fa-trash" onclick="deleteEl(event)"></i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-list-res">
+                <div class="card-res">
+                    <p class="title">TODOS</p>
+                    <p class="no" id="todos">7</p>
+                </div>
+
+
+                <div class="card-res">
+                    <p class="title">DELETED</p>
+                    <p class="no" id="delete">7</p>
+                </div>
+                <div class="card-res">
+                    <p class="title">DELETED</p>
+                    <p class="no" id="delete">7</p>
+                </div>
+            </div>
         </main>
         <main>
             <div class="card-list">

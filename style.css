@@ -2,12 +2,14 @@
     padding: 0;
     margin: 0;
 }
-body{
+
+body {
     font-family: 'Inter', sans-serif;
 }
 
 
-header{
+header {
+    width: 100%;
     height: 60px;
     display: flex;
     justify-content: space-between;
@@ -15,42 +17,47 @@ header{
     box-shadow: 2px 0 8px 0px #66666640;
 
 }
-header > *{
-    margin: 0   1em;
+
+header>* {
+    margin: 0 1em;
 }
+
 header .logo {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5em;
 }
-header .logo h1{
+
+header .logo h1 {
     font-size: 24px;
 
     color: #095B83;
 }
 
-header .logo .vector{
+header .logo .vector {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:0.1em;
+    gap: 0.1em;
 }
-header .logo .vector .upper{
+
+header .logo .vector .upper {
     width: 24px;
     height: 8px;
     background-color: #095B83;
     border-radius: 1em;
 }
-header .logo .vector .lower{
+
+header .logo .vector .lower {
     width: 8px;
     height: 24px;
     background-color: #11A8E6;
     border-radius: 1em;
 }
 
-.model{
-   
+.model {
+
     position: absolute;
     z-index: 4;
     height: 20em;
@@ -58,11 +65,12 @@ header .logo .vector .lower{
     background-color: #FFFFFF;
     width: 20em;
     left: calc(50% - 10em);
-    top:  calc(50% - 10em);
+    top: calc(50% - 10em);
     box-shadow: 2px 0 8px 0px #66666640;
     display: none;
 }
-.model form{
+
+.model form {
     width: 100%;
     height: 100%;
     display: flex;
@@ -70,16 +78,18 @@ header .logo .vector .lower{
     align-items: center;
     justify-content: center;
     gap: 1em;
-    
+
 }
-.model form input{
+
+.model form input {
     width: 80%;
     height: 2.5em;
     border-radius: 5px;
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.404);
 }
-.backdrop{
+
+.backdrop {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -88,10 +98,12 @@ header .logo .vector .lower{
     position: fixed;
     display: none;
 }
-.container{
+
+.container {
     width: 80%;
     margin: 0 auto;
 }
+
 main {
     width: 100%;
     display: flex;
@@ -100,7 +112,7 @@ main {
 main .card-list {
 
     margin: 1em;
- 
+
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -159,13 +171,14 @@ main .task-list {
     margin: 1em;
 
 }
-main .task-list .search{
+
+main .task-list .search {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-    height:55px;
+    height: 55px;
     background-color: #FFFFFF;
     box-shadow: 2px 0 8px 0px #66666640;
 
@@ -174,26 +187,30 @@ main .task-list .search{
 
 
 }
-main .task-list .search  i{
+
+main .task-list .search i {
     font-size: 24px;
     color: #C8C8C8;
 }
-main .task-list .search input{
+
+main .task-list .search input {
     width: 90%;
     border: none;
     outline: none;
     font-size: 18px;
 
 }
-main .task-list .search input::placeholder{
+
+main .task-list .search input::placeholder {
     color: #C8C8C8;
 }
 
-main .task-list .control-buttons{
+main .task-list .control-buttons {
     display: flex;
-    gap:1em;
+    gap: 1em;
 }
-.btn{
+
+.btn {
     padding: 1em 1.6em;
     background-color: #095B83;
     color: #FFFFFF;
@@ -210,7 +227,7 @@ main .task-list .list {
     justify-content: flex-start;
     align-items: center;
     gap: 1em;
-    overflow-y: auto ;
+    overflow-y: auto;
 
 }
 
@@ -227,23 +244,26 @@ main .task-list .list .task {
     height: 80px;
     transition: all .17s ease-in-out;
 }
-main .task-list .list .task .check-box{
-    border-radius:50%;
+
+main .task-list .list .task .check-box {
+    border-radius: 50%;
     padding: 0.3em;
     font-size: 24px;
     color: transparent;
     border: 1px solid rgba(0, 0, 0, 0.432);
     transition: all .17s ease-in-out;
 }
-main .task-list .list .task .task-body{
+
+main .task-list .list .task .task-body {
     width: 80%;
 
 }
 
-main .task-list .list .task .task-body input{
+main .task-list .list .task .task-body input {
     outline: none;
     border: 1px solid #11A8E6;
-    color: #11A8E6;;
+    color: #11A8E6;
+    ;
     border-radius: 4px;
     font-size: 18px;
     width: 100%;
@@ -251,17 +271,17 @@ main .task-list .list .task .task-body input{
 }
 
 
-main .task-list .list .task input:disabled{
+main .task-list .list .task input:disabled {
     border: 1px solid transparent;
 }
 
 
-main .task-list .list .task .task-body p{
+main .task-list .list .task .task-body p {
     font-size: 14px;
     color: #434343BF;
 }
 
-main .task-list .list .task .control{
+main .task-list .list .task .control {
     display: flex;
     width: 4em;
     align-items: center;
@@ -269,43 +289,49 @@ main .task-list .list .task .control{
     gap: 1em;
 
 }
-main .task-list .list .task .control .fa-pen-to-square{
+
+main .task-list .list .task .control .fa-pen-to-square {
     color: #11A8E6;
     filter: drop-shadow(0 0 4px #4444dd);
     transition: all .17s ease-in-out;
 }
-main .task-list .list .task:has(input:disabled) .control .fa-pen-to-square{
+
+main .task-list .list .task:has(input:disabled) .control .fa-pen-to-square {
     color: #11A8E6;
     filter: none;
 }
 
-main .task-list .list .task .control .fa-trash{
+main .task-list .list .task .control .fa-trash {
     color: rgb(241, 36, 36);
 }
 
-main .task-list .list  .done{
-    background-color: #E3E3E380 ;
+main .task-list .list .done {
+    background-color: #E3E3E380;
 }
-main .task-list .list  .done .task-body input{
+
+main .task-list .list .done .task-body input {
     text-decoration: line-through;
 }
-main .task-list .list .done .control .fa-pen-to-square{
+
+main .task-list .list .done .control .fa-pen-to-square {
     color: #818181 !important;
 }
-main .task-list .list  .done .check-box{
-    background-color: #11A8E6 ;
+
+main .task-list .list .done .check-box {
+    background-color: #11A8E6;
     color: white;
-    border:1px solid #11A8E6  ;
+    border: 1px solid #11A8E6;
 }
 
 
 
-@media screen  and (max-width:1280px) {
-    .container{
+@media screen and (max-width:1280px) {
+    .container {
         width: 100%;
     }
 }
-.res-header{
+
+.res-header {
     width: 100%;
     height: 50px;
     display: flex;
@@ -325,18 +351,66 @@ main .task-list .list  .done .check-box{
     justify-self: center;
     gap: 1em;
 }
-.res-main .btn{
+
+.res-main .btn {
     width: 90%;
+    height: 4em;
 }
+
 @media screen and (max-width:500px) {
     header {
         display: none;
     }
-    .res-header{
+
+    .res-header {
         display: flex;
     }
-    .res-main{
+
+    .container {
+        width: 100%;
+    }
+
+    .task-list {
+        width: 90% !important;
+    }
+
+    .res-main {
         display: flex;
+    }
+
+    .card-list {
+        display: none;
+        
+    }
+
+    .card-list-res {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 1em;
+        position: fixed;
+        padding: 1em;
+        bottom: 0;
+        background-color: #095B83;
+    }
+
+    .card-list-res .card-res {
+        width: 109px;
+        height: 50px;
+        border-radius: 12px;
+        font-size: 0.7em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #BBE7FC;
+    }
+    .card-list-res .card-res .title{
+        color: #095B83A6;
+    }
+    .card-list-res .card-res .no{
+        color: #095B83;
     }
     main {
         display: none;
