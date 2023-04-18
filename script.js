@@ -46,7 +46,7 @@ function rerender(ls) {
         </div>
         <div class="control">
             <i class="fa-solid fa-pen-to-square" onclick="edit(event)"></i>
-            <i class="fa-solid fa-trash" onclick="onModelOpenHandler(event, 'deleteEl(event, ${i})')"></i>
+            <i class="fa-solid fa-trash" onclick="onModelOpenHandler(event, 'deleteEl(event, ${i})', 'Are you sure to delete this task')"></i>
         </div>
     </div>
         `
@@ -123,14 +123,15 @@ function search(event) {
     rerender(filtered_list)
 }
 
-function onModelOpenHandler(event,callback) {
+function onModelOpenHandler(event,callback, message) {
     modelConform.innerHTML = `  
     <form action="" onsubmit="${callback}">
-        <button class="btn">Are you sure ddddd ?</button>
-    </form>
+        <button class="btn">${message}</button>
+        </form>
+    <button class='btn'  onclick=' onModelCloseHandler()'>cancle<button>
     `
     if (modelConform.style.display === "none") {
-        modelConform.style.display = 'block'
+        modelConform.style.display = 'flex'
         backdropEl.style.display = "block"
     } else {
         modelConform.style.display = 'none'
@@ -197,8 +198,12 @@ function markAllAsUnDone() {
 }
 
 function clearDoneTasks() {
+    event.preventDefault()
+
+    let x = total.length
     total = total.filter((item) => item.done === false)
-    stat = { ...stat, pending: total.length, done: 0 }
+    stat = { ...stat, pending: total.length, done: 0,deleteCount:stat.deleteCount+(x-total.length) }
+    onModelCloseHandler()
     rerender(total)
     renderStatisics()
 

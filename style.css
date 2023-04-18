@@ -67,7 +67,9 @@ header .logo .vector .lower {
     left: calc(50% - 10em);
     top: calc(50% - 10em);
     box-shadow: 2px 0 8px 0px #66666640;
-    display: none;
+    display: flex;
+    align-items:  center;
+    justify-content: center;
 }
 
 .model form {
