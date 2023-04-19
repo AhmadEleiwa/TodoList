@@ -73,9 +73,10 @@ function check(event) {
 
     } else {
         total[event.target.parentElement.getAttribute('key')].done = true
+        total[event.target.parentElement.getAttribute('key')].editable = true
         stat = { ...stat, done: stat.done + 1, pending: stat.pending - 1 }
     }
-    // total[event.target.parentElement.getAttribute('key')].done
+    
 
 
     rerender(total)
@@ -99,6 +100,7 @@ function deleteEl(event, index) {
 
 function edit(event) {
     const key = event.target.parentElement.parentElement.getAttribute('key')
+    if(total[parseInt(key)].done)return;
     total[parseInt(key)].editable = !total[parseInt(key)].editable
     rerender(total)
 
