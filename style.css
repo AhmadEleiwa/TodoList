@@ -103,6 +103,9 @@ header .logo .vector .lower {
 
 .container {
     width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
 }
 
@@ -112,11 +115,12 @@ main {
 }
 
 main .card-list {
-
-    margin: 1em;
+    width: 100%;
+    margin: 1em auto;
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1em;
 
 }
@@ -170,7 +174,7 @@ main .task-list {
     flex-direction: column;
     justify-content: center;
     gap: 1em;
-    margin: 1em;
+    margin: 1em auto;
 
 }
 
@@ -329,13 +333,15 @@ main .task-list .list .done .check-box {
 
 @media screen and (max-width:1280px) {
     .container {
-        width: 100%;
+        width: 98%;
     }
 }
 
 
 @media screen and (max-width:720px) {
     main{
+
+ 
         flex-direction: column;
     }
 
@@ -356,5 +362,11 @@ main .task-list .list .done .check-box {
     }
     main .card-list .card i {
         font-size: 6em;
+    }
+    main .task-list .control-buttons{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1em;
+        justify-content: flex-start;
     }
 }
