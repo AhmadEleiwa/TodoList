@@ -26,12 +26,17 @@ let stat = {
 function setup() {
     const x = JSON.parse(localStorage.getItem('data'))
     const st = JSON.parse(localStorage.getItem('stat'))
-    console.log(x)
+    const mode = JSON.parse(localStorage.getItem('mode'))
+
     if (x !== null)
         total = x
     if (st !== null) {
         stat = st
     }
+    if(mode !== null){
+        darkMode = mode
+    }
+    switchMode()
 }
 
 function rerender(ls) {
@@ -62,17 +67,20 @@ function rerender(ls) {
 
 
 function siwtchButtonHandler(event){
-    if(thumbEl.style.left === '0px'){
+    darkMode = !darkMode
+    switchMode()
+    
+    
+}
+function switchMode(){
+    if(darkMode){
         thumbEl.style.left = '2em'  
-        darkMode = true
     }
     else{
         thumbEl.style.left = '0px'
-        darkMode= false
     }
-
+    localStorage.setItem('mode', darkMode)
     document.body.className = darkMode ? "dark": ''
-    
 }
 function renderStatisics() {
     doneEl.innerText = stat.done

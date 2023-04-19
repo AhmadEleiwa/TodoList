@@ -425,6 +425,9 @@ main .task-list .list .done .check-box {
 }
 .dark main .task-list .search {
     background-color: #095B83;
+
+}
+.dark main .task-list .search input{
     color: white;
 }
 .dark .btn{
