@@ -14,10 +14,6 @@
 </head>
 
 <body>
-    <header class="res-header">
-        <p> TODO APP</p>
-        <i class="fa-solid fa-ellipsis-vertical"></i>
-    </header>
     <header>
         <div class="switch">
             <button>switch</button>
@@ -32,7 +28,7 @@
         <button class="btn" onclick="onAddTaskOpenHandler()">Add New Task</button>
     </header>
     <div class="model" id="model" style="display: none;">
-        <form action="" onsubmit="addTask(event)" >
+        <form action="" onsubmit="addTask(event)">
             <label for="">Title</label>
             <input type="text" required>
             <label for="">Assignee</label>
@@ -88,8 +84,12 @@
                 <div class="control-buttons">
                     <button class="btn" onclick="markAllAsDone()">Mark All as Done</button>
                     <button class="btn" onclick="markAllAsUnDone()">Mark All as Un-Done</button>
-                    <button class="btn" onclick="onModelOpenHandler(event, 'clearDoneTasks(event)', 'Delete All Done Tasks?')">Clear Done Tasks</button>
-                    <button class="btn" onclick="onModelOpenHandler(event,'clearAll(event)' , 'Are you sure to clear all tasks')">Clear All Tasks</button>
+                    <button class="btn"
+                        onclick="onModelOpenHandler(event, 'clearDoneTasks(event)', 'Delete All Done Tasks?')">Clear
+                        Done Tasks</button>
+                    <button class="btn"
+                        onclick="onModelOpenHandler(event,'clearAll(event)' , 'Are you sure to clear all tasks')">Clear
+                        All Tasks</button>
                     <button class="btn">Group By Assignee</button>
                 </div>
 
