@@ -3,13 +3,15 @@ const todosEl = document.getElementById('todos')
 const doneEl = document.getElementById('done')
 const deletedEl = document.getElementById('delete')
 const pendingEl = document.getElementById('pending')
-
+const thumbEl = document.getElementById('thumb')
 
 
 const backdropEl = document.getElementById('backdrop')
 const modelEl = document.getElementById('model')
 const modelConform = document.getElementById('confrom-delete-model')
 
+
+let darkMode = false;
 
 
 let total = []
@@ -56,6 +58,21 @@ function rerender(ls) {
     localStorage.setItem('data', JSON.stringify(total))
 
 
+}
+
+
+function siwtchButtonHandler(event){
+    if(thumbEl.style.left === '0px'){
+        thumbEl.style.left = '2em'  
+        darkMode = true
+    }
+    else{
+        thumbEl.style.left = '0px'
+        darkMode= false
+    }
+
+    document.body.className = darkMode ? "dark": ''
+    
 }
 function renderStatisics() {
     doneEl.innerText = stat.done

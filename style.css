@@ -7,7 +7,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-
 header {
     width: 100%;
     height: 60px;
@@ -204,6 +203,7 @@ main .task-list .search input {
     border: none;
     outline: none;
     font-size: 18px;
+    background-color: transparent;
 
 }
 
@@ -281,7 +281,7 @@ main .task-list .list .task .task-body input {
     border-radius: 4px;
     font-size: 18px;
     width: 100%;
-
+    background-color: transparent;
 }
 
 
@@ -325,6 +325,7 @@ main .task-list .list .done {
 
 main .task-list .list .done .task-body input {
     text-decoration: line-through;
+
 }
 
 main .task-list .list .done .control .fa-pen-to-square {
@@ -338,6 +339,29 @@ main .task-list .list .done .check-box {
 }
 
 
+.switch{
+    background-color: #5a5858;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 4em;
+    height: 2em;
+    border-radius: 3px;
+    position: relative;
+}
+.switch  i{
+    z-index: 1;
+    color: white;
+}
+.switch .thumb{
+    width: 2em;
+    height: 2em;
+    background-color: #0c90d2;
+    z-index: 0;
+    position:absolute;
+    transition: all 0.17s ease-in-out;
+    border-radius: 3px;
+}
 
 @media screen and (max-width:1280px) {
     .container {
@@ -358,6 +382,7 @@ main .task-list .list .done .check-box {
         flex-direction: row;
         flex-wrap: wrap;
         margin: 0;
+        margin-top: 1em;
     }
     main .card-list .card{
         width:167.99px;
@@ -385,3 +410,40 @@ main .task-list .list .done .check-box {
         display: none;
     }
 }
+
+.dark{
+    background-color: #1F3A47;
+}
+.dark header{
+    background-color: #095B83;
+}
+.dark header h1{
+    color: white;
+}
+.dark header .logo .vector .upper {
+    background-color: #1F3A47;
+}
+.dark main .task-list .search {
+    background-color: #095B83;
+    color: white;
+}
+.dark .btn{
+    background-color: #095B83;
+   
+}
+
+.dark main .task-list .task{
+    background-color: #095B83;
+
+}
+.dark main .task-list .task .task-body input{
+   color: white;;
+}
+
+.dark main .task-list .task .task-body p{
+    color: white;;
+ }
+ 
+ .dark main .card-list .card {
+    background: linear-gradient(281.77deg, #56c3f6 32.97%, #095B83 92.16%);
+ }
